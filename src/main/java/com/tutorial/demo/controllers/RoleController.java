@@ -3,33 +3,30 @@ package com.tutorial.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tutorial.demo.dto.UserDto;
-import com.tutorial.demo.services.UserService;
+import com.tutorial.demo.dto.RoleDto;
+import com.tutorial.demo.services.RoleService;
 
 @RestController
 @RequestMapping("/api/v1")
-public class UserController {
+public class RoleController {
+
 	
 	@Autowired
-	private UserService userService;
+	private RoleService roleService;
 	
-	@GetMapping
-	public String welcome() {
-		return "Welcome to homepage";
-	}
-	
-	@PostMapping("/users")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+	@PostMapping("/roles")
+	public ResponseEntity<RoleDto> saveRole(@RequestBody RoleDto roleDto){
 		
-		UserDto newUser = userService.saveUserWithDefaultRole(userDto);
+		RoleDto newRole = roleService.saveRole(roleDto);
 		
-		return new ResponseEntity<>(newUser,HttpStatus.CREATED);
+		return new ResponseEntity<RoleDto>(newRole,HttpStatus.CREATED);
 	}
-
+		
+		
 }
+	

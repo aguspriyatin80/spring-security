@@ -1,7 +1,5 @@
 package com.tutorial.demo.controllers;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,17 +68,18 @@ public class AuthController {
 	@PostMapping("/register")
 	public ResponseEntity<UserDto> registerUser(@RequestBody UserDto user){
 		
-		UserDto newUser = userService.saveUser(user);
+		UserDto newUser = userService.saveUserWithDefaultRole(user);
 		
 		return new ResponseEntity<>(newUser,HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/register2")
-	public ResponseEntity<UserDto> registerUser2(@RequestBody UserDto userDto){
+//	@PostMapping("/register2")
+//	public ResponseEntity<UserDto> registerUser2(@RequestBody UserDto userDto){
+//		
+//		UserDto newUser = userService.registerNewUser(userDto);
+//		
+//		return new ResponseEntity<UserDto>(newUser,HttpStatus.CREATED);
+//	}
 		
-		UserDto newUser = userService.registerNewUser(userDto);
-		
-		return new ResponseEntity<UserDto>(newUser,HttpStatus.CREATED);
-	}
 		
 }

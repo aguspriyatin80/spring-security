@@ -13,4 +13,6 @@ public interface UserRepo extends JpaRepository<User, Integer>{
 
 	UserDto save(UserDto registerDto);
 	
+	User findByFullName(String fullName);
+	
 }
